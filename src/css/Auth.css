@@ -1,0 +1,44 @@
+.loginPage {
+    margin: 10% auto;
+    text-align: center;
+}
+
+.loginPage-form {
+    width: 30%;
+    margin: auto;
+}
+
+.loginPage-form-container {
+    border: 1px solid grey;
+    border-radius: 5px;
+    background-color: rgb(214, 214, 214);
+}
+
+.loginPage-form-input {
+    width: 65%;
+    margin-top: 10px;
+    margin: auto;
+}
+
+.loginPage-form-label {
+    /* float: left; */
+    margin: 10px 0;
+}
+
+.loginPage-errMsg-Container {
+    height: 2vh;
+}
+
+.loginPage-errMsg {
+    background-color: #FFDCE0;
+    color: red;
+    height: 20px;
+    font-size: 16px;
+    width: 50%;
+    margin: 2% auto;
+}
+
+.loginPage-form-btn {
+    margin: 10px;;
+}
+
