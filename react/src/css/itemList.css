@@ -1,0 +1,108 @@
+.itemListPage {
+    padding: 0;
+    margin: 0;
+}
+
+.itemListPage-header {
+    width: 100%;
+    height: 5vh;
+    display: inline-block;
+    margin-top: 2%;
+}
+
+.itemListPage-brand {
+    font-size: 2em;
+    font-weight: bold;
+    color: #FF0001;
+    width: 20%;
+    float: left;
+    margin-left: 3%;
+}
+
+.itemListPage-searchbar {
+    width: 80%;
+    height: 20px;
+    margin-top: 5px;
+    position: absolute;
+    right: 5%;
+    text-align: right;
+}
+
+.itemListPage-inputField {
+    width: 30%;
+    height: 3vh;
+    margin-right: 3%;
+}
+
+.itemListPage-searchIcon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10%;
+    margin-left: 5px;
+    border: 1px solid red;
+    
+}
+.itemListPage-cart {
+    width: 5%;
+    float: right;
+    margin-top: 10px;
+}
+
+.itemlistPage-cartBtn {
+    border: none;
+    background: transparent;
+    margin-right: 4%;
+}
+
+.itemListPage-cartIcon {
+    width: 35px;
+    height: 35px;
+    z-index: 1;
+}
+
+.itemListPage-cartNum {
+    width: 20px;
+    margin-top: 5%;
+}
+
+.itemListPage-content {
+    padding: 3%;
+    height: auto;
+    width: 100%;
+}
+
+.itemListPage-card {
+    border: 1px solid grey;
+    width: 30%;
+    height: auto;
+    float: left;
+    margin: 1%;
+}
+
+.itemListPage-card-img {
+    width: 100%;
+    height: 20vh;
+    object-fit: fill;
+}
+
+.itemListPage-product-left {
+    padding: 5%;
+    width: 50%;
+    float: left;
+}
+
+.itemListPage-product-left label {
+    font-size: 20px;
+}
+
+.itemListPage-product-right {
+    width: 50%;
+    height: 9vh;
+    float: left;
+}
+
+.itemListPage-product-btn {
+    width: 100%;
+    height: 100%;
+    font-size: 25px;
+}

@@ -1,14 +1,15 @@
 import { useState } from 'react/cjs/react.development';
 import Auth from './Components/Auth';
+import ItemList from './Components/Itemlist';
 
 function App() {
   const [user, setUser] = useState('');
   const [err, setErr] = useState('');
-  console.log(user)
   return (
     <div>
       {(user !== '') ?
-        <h1>hello</h1> :
+        <ItemList />
+        :
         <Auth error={err} setErr={setErr} user={user} setUser={setUser} />
       }
 
