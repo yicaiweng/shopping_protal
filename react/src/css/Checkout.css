@@ -1,5 +1,5 @@
 .checkoutPage-left {
-    height: 100vh;
+    height: auto;
     width: 70%;
     float: left;
 }
@@ -9,7 +9,7 @@
 }
 
 .checkoutPage-right {
-    height: 100vh;
+    height: auto;
     width: 30%;
     float: left;
     padding: 0 3%;
@@ -97,7 +97,7 @@
     color: white;
     border-radius: 5px;
     width: 30%;
-    height: 2vh;
+    height: 3vh;
 }
 
 .checkoutPage-checkoutBtn-Container {
@@ -111,5 +111,5 @@
     background-color: #008A00;
     color: white;
     border-radius: 5px;
-    height: 2vh;
+    height: 3vh;
 }

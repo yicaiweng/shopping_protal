@@ -74,7 +74,6 @@ function Checkout(props) {
 
     const removeItem = item => {
         console.log(item);
-        alert('Are you sure you want to remove this item from your cart?')
         for (var i in itemsFromCart) {
             if (item.id === itemsFromCart[i].id) {
                 itemsFromCart.splice(i, 1);
@@ -107,10 +106,10 @@ function Checkout(props) {
                                                         </div>
                                                         <div className="checkoutPage-itemInfo">
                                                             <h1 className="checkoutPage-itemInfo-itemName">{items.itemName}</h1>
-                                                            <input type="text" className="checkoutPage-itemInfo-quantity" placeholder={items.quantity} onChange={e => { updateQuantity(e, items) }} />
+                                                            <input type="number" className="checkoutPage-itemInfo-quantity" min="0" placeholder={items.quantity} onChange={e => { updateQuantity(e, items) }} />
                                                             <label className="checkoutPage-itemInfo-price">${items.itemPrice * items.quantity}</label>
                                                             <div className="checkoutPage-itemInfo-removeBtn-container">
-                                                                <button className="checkoutPage-itemInfo-removeBtn" onClick={e => removeItem(items)}>Remove</button>
+                                                                <button className="checkoutPage-itemInfo-removeBtn" onClick={() => removeItem(items)}>Remove</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -144,12 +143,16 @@ function Checkout(props) {
                                         <span>${cartTotal}</span>
                                     </div>
                                 </div>
-                                <div className="checkoutPage-checkoutBtn-Container">
-                                    <button type='button' className="checkoutPage-checkoutBtn">Checkout</button>
-                                </div>
+                                {
+                                    itemsFromCart.length > 0 ?
+                                        <div className="checkoutPage-checkoutBtn-Container">
+                                            <button type='button' className="checkoutPage-checkoutBtn">Checkout</button>
+                                        </div> : ''
+                                }
+
                             </div>
                         </div>
-                    </div >
+                    </div>
             }
         </div>
     )
