@@ -8,9 +8,11 @@ import Checkout from './Checkout'
 function ItemList(props) {
     const [listOfItems, setListOfItems] = useState([]);
     const [itemsInCart, setItemsInCart] = useState([]);
+    const [itemsToCheckout, setItemsToCheckout] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
     const [gotoCheckOut, setGotoCheckout] = useState(false);
+    const [item, setItem] = useState([]);
 
     useEffect(() => {
         Axios.get('http://localhost:3001/listofitems').then((res) => {
@@ -20,8 +22,15 @@ function ItemList(props) {
     }, [listOfItems])
 
     const addTocart = item => {
+        item.quantity = 1;
+        for (var i = 0; i < itemsInCart.length; i++) {
+            if (item.id === itemsInCart[i].id) {
+                item.quantity = item.quantity + 1;
+            }
+        }
         setItemsInCart(itemsInCart => [...itemsInCart, item]);
     }
+
 
     const handleSearch = e => {
         setSearchTerm(e.target.value);
@@ -36,8 +45,12 @@ function ItemList(props) {
     const gotoCheckoutPage = e => {
         e.preventDefault();
         setGotoCheckout(true);
-        console.log(gotoCheckOut);
-        console.log('running le');
+        console.log(itemsInCart);
+        const result = itemsInCart.sort(({ quantity: a }, { quantity: b }) => b - a)
+            .filter((elements, index) => index === itemsInCart.findIndex(element => elements.id === element.id))
+        console.log(result);
+        setItemsToCheckout(itemsToCheckout => [...itemsToCheckout, result]);
+        console.log(JSON.stringify(itemsToCheckout))
     }
 
     return (
@@ -45,7 +58,7 @@ function ItemList(props) {
             {
                 gotoCheckOut ?
                     <div>
-                        <Checkout itemsInCart={itemsInCart} />
+                        <Checkout itemsToCheckout={itemsToCheckout} />
                     </div>
 
                     :
@@ -54,9 +67,6 @@ function ItemList(props) {
                             <span className="itemListPage-brand">Shopping Portal</span>
                             <span className="itemListPage-searchbar">
                                 <input type="text" className="itemListPage-inputField" placeholder="Search" value={searchTerm} onChange={handleSearch} />
-                                {/* <button className="itemListPage-searchBtn" onClick={ }>
-                        <img className="itemListPage-searchIcon" src={searchIcon} alt='search icon'></img>
-                    </button> */}
                             </span>
                             <span className="itemListPage-cart">
                                 <button className="itemlistPage-cartBtn" type="button" onClick={gotoCheckoutPage}>
@@ -70,11 +80,11 @@ function ItemList(props) {
                                 return (
                                     <div className="itemListPage-card" key={items.id}>
                                         < img src={items.itemImg} alt="item images" className="itemListPage-card-img" />
-                                        <div className="itemListPage-product-left">
+                                        <div className="itemListPage-product-info">
                                             <h1>{items.itemName}</h1>
                                             <label>${items.itemPrice}</label>
                                         </div>
-                                        <div className="itemListPage-product-right">
+                                        <div className="itemListPage-product-bottom">
                                             <button type="button" className="itemListPage-product-btn btn btn-success" onClick={e => { addTocart(items) }}>Add to Cart</button>
                                         </div>
                                     </div>
