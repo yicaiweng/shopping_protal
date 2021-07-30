@@ -1,0 +1,115 @@
+.checkoutPage-left {
+    height: 100vh;
+    width: 70%;
+    float: left;
+}
+
+.checkoutPage-left h2 {
+    margin-top: 3%;
+}
+
+.checkoutPage-right {
+    height: 100vh;
+    width: 30%;
+    float: left;
+    padding: 0 3%;
+}
+
+.checkoutPage-itemInfo-container {
+    width: 100%;
+    height: 20vh;
+    border-bottom: 1px solid lightgrey;
+}
+
+.checkoutPage-cartCount {
+    font-size: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.checkoutPage-img-container {
+    width: 30%;
+    margin: 2%;
+    float: left;
+}
+
+.checkoutPage-img {
+    width: 80%;
+    height: 15vh;
+}
+
+.checkoutPage-itemInfo {
+    width: 60%;
+    margin-top: 5%;
+    display: inline-block;
+}
+
+.checkoutPage-itemInfo-itemName {
+    width: 70%;
+    display: inline-block;
+}
+
+.checkoutPage-itemInfo-quantity {
+    width: 5%;
+    margin: 0 5%;
+    display: inline-block;
+}
+
+.checkoutPage-itemInfo-price {
+    width: 5%;
+    display: inline-block;
+}
+
+.checkoutPage-itemInfo-removeBtn-container {
+    margin-top: 2%;
+    display: block;
+    text-align: right;
+    margin-right: 15%;
+}
+
+.checkoutPage-itemInfo-removeBtn {
+    border: none;
+    background-color: transparent;
+    color: blue;
+}
+
+.checkoutPage-totalBox {
+    box-shadow: 0 0.0625rem 0.25rem 0 rgb(66 66 66 / 40%);
+    height: auto;
+    padding: 2%;
+    margin-top: 5%;
+    border-radius: 5px;
+}
+
+.checkoutPage-totalBox-row {
+    display: inline-block;
+    margin-top: 2%;
+    width: 95%;
+}
+
+.checkoutPage-totalBox-row span:nth-child(2) {
+    float: right;
+}
+
+.checkoutPage-left-btn {
+    margin-top: 1%;
+    background-color: #008A00;
+    color: white;
+    border-radius: 5px;
+    width: 30%;
+    height: 2vh;
+}
+
+.checkoutPage-checkoutBtn-Container {
+    margin-top: 5%;
+    text-align: center;
+    justify-content: center;
+}
+
+.checkoutPage-checkoutBtn {
+    width: 90%;
+    background-color: #008A00;
+    color: white;
+    border-radius: 5px;
+    height: 2vh;
+}
