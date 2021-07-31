@@ -86,72 +86,79 @@ function Checkout(props) {
     return (
         <div>
             {
-                goBackToItemlist ?
-                    <ItemList /> :
-                    <div className="itemListPage">
-                        <div className="itemListPage-header">
-                            <span className="itemListPage-brand">Shopping Portal</span>
-                        </div>
-                        <div className="itemListPage-content">
-                            <div className="checkoutPage-cartCount">Cart ({cartCount})</div>
-                            <div className="checkoutPage-left">
-                                {
-                                    itemsFromCart.length > 0 ?
-                                        <div>
-                                            {itemsFromCart.map(items => {
-                                                return (
-                                                    <div className="checkoutPage-itemInfo-container" key={items.id}>
-                                                        <div className="checkoutPage-img-container">
-                                                            <img src={items.itemImg} alt="item images" className="itemListPage-card-img checkoutPage-img" />
-                                                        </div>
-                                                        <div className="checkoutPage-itemInfo">
-                                                            <h1 className="checkoutPage-itemInfo-itemName">{items.itemName}</h1>
-                                                            <input type="number" className="checkoutPage-itemInfo-quantity" min="0" placeholder={items.quantity} onChange={e => { updateQuantity(e, items) }} />
-                                                            <label className="checkoutPage-itemInfo-price">${items.itemPrice * items.quantity}</label>
-                                                            <div className="checkoutPage-itemInfo-removeBtn-container">
-                                                                <button className="checkoutPage-itemInfo-removeBtn" onClick={() => removeItem(items)}>Remove</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            })}
-                                        </div>
-                                        :
+                checkOut ?
+                    <Confirmation cartCount={cartCount} cartCosts={cartCosts} shipping={shipping} saleTax={saleTax} cartTotal={cartTotal} itemsFromCart={itemsFromCart} />
+                    :
+                    <div>
+                        {
+                            goBackToItemlist ?
+                                <ItemList /> :
+                                <div className="itemListPage">
+                                    <div className="itemListPage-header">
+                                        <span className="itemListPage-brand">Shopping Portal</span>
+                                    </div>
+                                    <div className="itemListPage-content">
+                                        <div className="checkoutPage-cartCount">Cart ({cartCount})</div>
                                         <div className="checkoutPage-left">
-                                            <h2>Your Cart is Empty</h2>
-                                            <button type="button" className="checkoutPage-left-btn" onClick={e => setGoBackToItemlist(true)}>Continue Shopping</button>
+                                            {
+                                                itemsFromCart.length > 0 ?
+                                                    <div>
+                                                        {itemsFromCart.map(items => {
+                                                            return (
+                                                                <div className="checkoutPage-itemInfo-container" key={items.id}>
+                                                                    <div className="checkoutPage-img-container">
+                                                                        <img src={items.itemImg} alt="item images" className="itemListPage-card-img checkoutPage-img" />
+                                                                    </div>
+                                                                    <div className="checkoutPage-itemInfo">
+                                                                        <h1 className="checkoutPage-itemInfo-itemName">{items.itemName}</h1>
+                                                                        <input type="number" className="checkoutPage-itemInfo-quantity" min="0" placeholder={items.quantity} onChange={e => { updateQuantity(e, items) }} />
+                                                                        <label className="checkoutPage-itemInfo-price">${items.itemPrice * items.quantity}</label>
+                                                                        <div className="checkoutPage-itemInfo-removeBtn-container">
+                                                                            <button className="checkoutPage-itemInfo-removeBtn" onClick={() => removeItem(items)}>Remove</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            )
+                                                        })}
+                                                    </div>
+                                                    :
+                                                    <div className="checkoutPage-left">
+                                                        <h2>Your Cart is Empty</h2>
+                                                        <button type="button" className="checkoutPage-left-btn" onClick={e => setGoBackToItemlist(true)}>Continue Shopping</button>
+                                                    </div>
+                                            }
                                         </div>
-                                }
-                            </div>
-                            <div className="checkoutPage-right">
-                                <div className="checkoutPage-totalBox">
-                                    <h2 style={{ borderBottom: '1px solid lightgray', paddingBottom: '15px' }}>Total</h2>
-                                    <div className="checkoutPage-totalBox-row">
-                                        <span>Subtotal({cartCount} items)</span>
-                                        <span>${carCosts}</span>
-                                    </div>
-                                    <div className="checkoutPage-totalBox-row">
-                                        <span>Est. Shipping costs</span>
-                                        <span>${shipping}</span>
-                                    </div>
-                                    <div className="checkoutPage-totalBox-row" style={{ borderBottom: '1px solid lightgray', paddingBottom: '15px' }}>
-                                        <span>Est. sale tax</span>
-                                        <span>${saleTax}</span>
-                                    </div>
-                                    <div className="checkoutPage-totalBox-row" style={{ fontWeight: '600' }}>
-                                        <span>Est. total</span>
-                                        <span>${cartTotal}</span>
+                                        <div className="checkoutPage-right">
+                                            <div className="checkoutPage-totalBox">
+                                                <h2 style={{ borderBottom: '1px solid lightgray', paddingBottom: '15px' }}>Total</h2>
+                                                <div className="checkoutPage-totalBox-row">
+                                                    <span>Subtotal({cartCount} items)</span>
+                                                    <span>${cartCosts}</span>
+                                                </div>
+                                                <div className="checkoutPage-totalBox-row">
+                                                    <span>Est. Shipping costs</span>
+                                                    <span>${shipping}</span>
+                                                </div>
+                                                <div className="checkoutPage-totalBox-row" style={{ borderBottom: '1px solid lightgray', paddingBottom: '15px' }}>
+                                                    <span>Est. sale tax</span>
+                                                    <span>${saleTax}</span>
+                                                </div>
+                                                <div className="checkoutPage-totalBox-row" style={{ fontWeight: '600' }}>
+                                                    <span>Est. total</span>
+                                                    <span>${cartTotal}</span>
+                                                </div>
+                                            </div>
+                                            {
+                                                itemsFromCart.length > 0 ?
+                                                    <div className="checkoutPage-checkoutBtn-Container">
+                                                        <button type='button' className="checkoutPage-checkoutBtn" onClick={() => setCheckOut(true)}>Checkout</button>
+                                                    </div> : ''
+                                            }
+
+                                        </div>
                                     </div>
                                 </div>
-                                {
-                                    itemsFromCart.length > 0 ?
-                                        <div className="checkoutPage-checkoutBtn-Container">
-                                            <button type='button' className="checkoutPage-checkoutBtn">Checkout</button>
-                                        </div> : ''
-                                }
-
-                            </div>
-                        </div>
+                        }
                     </div>
             }
         </div>

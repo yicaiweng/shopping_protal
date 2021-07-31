@@ -1,0 +1,91 @@
+.confirmPage-left {
+    border: 1px solid lightgray;
+    width: 68%;
+    display: inline-block;
+    height: 100vh;
+    padding: 1%;
+}
+
+.confirmPage-right {
+    width: 30%;
+    float: right;
+}
+
+.confirmPage-header {
+    font-weight: bold;
+}
+
+.confirmPage-header h1{
+    border-bottom: 1px solid lightgray;
+}
+
+.confirmPage-orderDetail-container {
+    margin-top: 2%;
+    height: 6vh;
+    width: 55%;
+    float: left;
+}
+
+.confirmPage-printContainer {
+    width: 40%;
+    float: right;
+    text-align: center;
+    margin-top: 2%;
+    height: 6vh;
+}
+
+.confirmPage-printBtn {
+    width: 30%;
+}
+
+.confirmPage-printerIcon {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    margin: 0 5%;
+}
+
+.confirmPage-orderDetail {
+    display: inline-block;
+    width: 100%;
+    font-size: 18px;
+    color: #737373;
+}
+
+.confirmPage-orderDetail span:nth-child(2) {
+    float: right;
+}
+
+.confirmPage-paymentDetail-container {
+    margin-top: 5%;
+    height: 15vh;
+}
+
+.confirmPage-paymentDetail-left {
+    width: 50%;
+    float: left;
+    height: 15vh;
+}
+
+.confirmPage-paymentDetail-right {
+    width: 50%;
+    float: left;
+    height: 15vh;
+}
+
+.confirmPage-itemOrdered {
+    width: 30%;
+}
+
+.confirmPage-itemOrdered-detail{
+    width: 60%;
+    margin-left:3%;
+}
+
+.confirmPage-itemOrdered img{
+    width: 30%;
+}
+
+.confirmPage-itemOrdered span h6{
+    float: left;
+}
