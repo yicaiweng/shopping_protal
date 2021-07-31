@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import ItemList from './Itemlist';
 import '../css/Checkout.css';
+import Confirmation from './Confirmation';
 
 function Checkout(props) {
     const [itemsFromCart, setItemsFromCart] = useState([]);
     const [itemsToCheckout, setItemsToCheckout] = useState([]);
     const [cartCount, setCartCount] = useState('');
-    const [carCosts, setCartCosts] = useState('');
+    const [cartCosts, setCartCosts] = useState('');
     const [saleTax, setSaleTax] = useState('');
     const [cartTotal, setCartTotal] = useState('');
     const [shipping, setShipping] = useState('');
     const [goBackToItemlist, setGoBackToItemlist] = useState(false);
-
+    const [checkOut, setCheckOut] = useState(false);
 
     useEffect(() => {
         setItemsFromCart(props.itemsToCheckout[0])
@@ -26,7 +27,6 @@ function Checkout(props) {
 
         if (itemsFromCart.length > 0) {
             for (var i in itemsFromCart) {
-                console.log(itemsFromCart[i].quantity)
                 itemsTotal = parseInt(itemsTotal) + parseInt(itemsFromCart[i].quantity)
                 costsTotal = parseFloat(costsTotal) + parseFloat(itemsFromCart[i].quantity * itemsFromCart[i].itemPrice)
                 saleTax = parseFloat(costsTotal * 0.0825);
@@ -48,22 +48,14 @@ function Checkout(props) {
 
     const updateQuantity = (e, items) => {
         let itemQuantity = e.target.value;
-        console.log(items)
-        console.log(itemQuantity)
         for (var i in itemsFromCart) {
             if (items.id === itemsFromCart[i].id) {
                 items.quantity = itemQuantity;
                 setItemsToCheckout(itemsFromCart => [...itemsFromCart, items]);
             }
-            console.log('item quantity' + itemsFromCart[i].quantity);
-            if (itemsFromCart[i].quantity === 0) {
-                console.log('ruuning')
-                alert('are you sure you want to remove this item from the cart?')
-            }
         }
         filterCart(itemsFromCart);
         getCartTotal();
-        console.log(itemsFromCart)
     }
 
     const filterCart = cart => {
@@ -73,14 +65,12 @@ function Checkout(props) {
     }
 
     const removeItem = item => {
-        console.log(item);
         for (var i in itemsFromCart) {
             if (item.id === itemsFromCart[i].id) {
                 itemsFromCart.splice(i, 1);
             }
         }
         getCartTotal();
-        console.log(itemsFromCart);
     }
 
     return (

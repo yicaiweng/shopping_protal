@@ -5,7 +5,6 @@ import Printer from '../css/img/printer.png'
 import Card from '../css/img/card.png'
 
 function Confirmation(props) {
-    // console.log(props)
     const [orderDate, setOrderDate] = useState('');
     const [checkoutItems, setCheckOutItems] = useState([])
 

@@ -45,12 +45,9 @@ function ItemList(props) {
     const gotoCheckoutPage = e => {
         e.preventDefault();
         setGotoCheckout(true);
-        console.log(itemsInCart);
         const result = itemsInCart.sort(({ quantity: a }, { quantity: b }) => b - a)
             .filter((elements, index) => index === itemsInCart.findIndex(element => elements.id === element.id))
-        console.log(result);
         setItemsToCheckout(itemsToCheckout => [...itemsToCheckout, result]);
-        console.log(JSON.stringify(itemsToCheckout))
     }
 
     return (
