@@ -10,8 +10,8 @@ function Confirmation(props) {
 
     useEffect(() => {
         setOrderDate(new Date().toLocaleString().split(',')[0]);
-        setCheckOutItems(props.itemsFromCart)
-    }, [props.itemsFromCart])
+        setCheckOutItems(props.location.data)
+    }, [checkoutItems, props.location])
 
     const printPage = () => {
         window.print();
@@ -98,20 +98,20 @@ function Confirmation(props) {
                     <div className="checkoutPage-totalBox" style={{ marginTop: '0' }}>
                         <h2 style={{ borderBottom: '1px solid lightgray', paddingBottom: '15px' }}>Order Summary</h2>
                         <div className="checkoutPage-totalBox-row">
-                            <span>Subtotal({props.cartCount} items)</span>
-                            <span>${props.cartCosts}</span>
+                            <span>Subtotal({props.location.cartCount} items)</span>
+                            <span>${props.location.cartCosts}</span>
                         </div>
                         <div className="checkoutPage-totalBox-row">
                             <span>Est. Shipping costs</span>
-                            <span>${props.shipping}</span>
+                            <span>${props.location.shipping}</span>
                         </div>
                         <div className="checkoutPage-totalBox-row" style={{ borderBottom: '1px solid lightgray', paddingBottom: '15px' }}>
                             <span>Est. sale tax</span>
-                            <span>${props.saleTax}</span>
+                            <span>${props.location.saleTax}</span>
                         </div>
                         <div className="checkoutPage-totalBox-row" style={{ fontWeight: '600' }}>
                             <span>Est. total</span>
-                            <span>${props.cartTotal}</span>
+                            <span>${props.location.cartTotal}</span>
                         </div>
                     </div><br></br>
                     <div className="checkoutPage-totalBox" style={{ marginTop: '5%' }}>

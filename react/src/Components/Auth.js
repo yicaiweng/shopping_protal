@@ -1,14 +1,15 @@
 import '../css/Auth.css';
 import '../css/global.css';
 import { useState } from 'react/cjs/react.development';
+import { useHistory } from "react-router-dom";
 
 function Auth(props) {
     const adminName = 'admin';
     const adminPassword = 'admin';
-
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
+    let history = useHistory();
 
     function enableSubmit() {
         return userName.length > 0 && password.length > 0;
@@ -17,13 +18,14 @@ function Auth(props) {
     function signIn() {
         if (userName.toString().toLowerCase() === adminName.toString().toLowerCase() && password.toString().toLowerCase() === adminPassword.toString().toLowerCase()) {
             console.log('Login successfully')
-            props.setUser(userName)
-            props.setErr(false);
             setError(false);
+            props.setUser(true);
+            history.push('/itemList');
         } else {
             console.log('Login failed')
-            props.setErr(true);
             setError(true);
+            props.setUser(false);
+            history.push('/');
         }
     }
 
