@@ -18,10 +18,13 @@ function ItemList(props) {
         Axios.get('http://localhost:3001/listofitems').then((res) => {
             if (isMounted) {
                 setListOfItems(res.data);
+                if (props.location.data) {
+                    setItemsInCart(props.location.data);
+                }
             }
         })
         return () => { isMounted = false };
-    }, [listOfItems])
+    }, [listOfItems, props.location.data, itemsInCart])
 
     const addTocart = item => {
         item.quantity = 1;
@@ -51,12 +54,6 @@ function ItemList(props) {
 
     return (
         <div>
-            {/* {
-                gotoCheckOut ?
-                    <div>
-                        <Checkout itemsToCheckout={itemsToCheckout} />
-                    </div>
-                    : */}
             <div className="itemListPage">
                 <div className="itemListPage-header">
                     <span className="itemListPage-brand">Shopping Portal</span>

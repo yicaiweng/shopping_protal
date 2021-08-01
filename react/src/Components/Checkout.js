@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/Checkout.css';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import ShoppingBag from '../css/img/shoppingBag.png'
 
 function Checkout(props) {
     const [itemsFromCart, setItemsFromCart] = useState([]);
@@ -10,8 +11,8 @@ function Checkout(props) {
     const [saleTax, setSaleTax] = useState('');
     const [cartTotal, setCartTotal] = useState('');
     const [shipping, setShipping] = useState('');
-
     let history = useHistory();
+
     useEffect(() => {
         setItemsFromCart(props.location.data);
         getCartTotal()
@@ -72,8 +73,12 @@ function Checkout(props) {
         getCartTotal();
     }
 
+    const goToitemList = () => {
+        history.push('/itemList');
+    }
+
     const goBack = () => {
-        console.log('go back')
+        history.push({ pathname: '/itemList', data: itemsFromCart })
     }
 
     const gotoCheckout = () => {
@@ -86,6 +91,12 @@ function Checkout(props) {
                 <div className="itemListPage">
                     <div className="itemListPage-header">
                         <span className="itemListPage-brand">Shopping Portal</span>
+                        <span className="itemListPage-cart">
+                            <button className="itemlistPage-cartBtn" type="button" onClick={() => goBack()}>
+                                <img className="itemListPage-cartIcon" src={ShoppingBag} alt="shopping cart icon"></img>
+                                {itemsFromCart.length > 0 ? <span className="itemListPage-cartNum">{itemsFromCart.length}</span> : null}
+                            </button>
+                        </span>
                     </div>
                     <div className="itemListPage-content">
                         <div className="checkoutPage-cartCount">Cart ({cartCount})</div>
@@ -114,7 +125,7 @@ function Checkout(props) {
                                     :
                                     <div className="checkoutPage-left">
                                         <h2>Your Cart is Empty</h2>
-                                        <button type="button" className="checkoutPage-left-btn" onClick={() => goBack}>Continue Shopping</button>
+                                        <button type="button" className="checkoutPage-left-btn" onClick={() => goToitemList()}>Continue Shopping</button>
                                     </div>
                             }
                         </div>
