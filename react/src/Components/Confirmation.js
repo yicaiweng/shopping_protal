@@ -26,7 +26,7 @@ function Confirmation(props) {
                 <div className="confirmPage-left">
                     <div>
                         <div className="confirmPage-header">
-                            <h1 className="">Thank You For Your Order</h1>
+                            <h2 className="">Thank You For Your Order</h2>
                         </div>
                         <div className="confirmPage-orderDetail-container">
                             <div className="confirmPage-orderDetail">
@@ -113,8 +113,8 @@ function Confirmation(props) {
                             <span>Est. total</span>
                             <span>${props.location.cartTotal}</span>
                         </div>
-                    </div><br></br>
-                    <div className="checkoutPage-totalBox" style={{ marginTop: '5%' }}>
+                    </div>
+                    <div className="checkoutPage-totalBox" style={{ marginTop: '3%' }}>
                         <h2 style={{ borderBottom: '1px solid lightgray', paddingBottom: '15px' }}>Items Ordered</h2>
                         {checkoutItems.map(item => {
                             return (
@@ -125,7 +125,7 @@ function Confirmation(props) {
                             )
                         })}
                     </div>
-                    <div className="checkoutPage-totalBox" style={{ marginTop: '5%' }}>
+                    <div className="checkoutPage-totalBox" style={{ marginTop: '3%' }}>
                         <h2 style={{ borderBottom: '1px solid lightgray', paddingBottom: '15px' }}>Need Help?</h2>
                         <div style={{ color: 'red' }}>
                             <p>Send Feedback</p>

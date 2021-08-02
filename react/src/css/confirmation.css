@@ -15,7 +15,8 @@
     font-weight: bold;
 }
 
-.confirmPage-header h1{
+.confirmPage-header h2{
+    padding-bottom: 15px;
     border-bottom: 1px solid lightgray;
 }
 
@@ -88,4 +89,28 @@
 
 .confirmPage-itemOrdered span h6{
     float: left;
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media only screen and (max-width: 320px) {
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media only screen and (min-width:321px) and (max-width: 767px) {
+    .confirmPage-left {
+        width: 100%;
+    }
+    .confirmPage-right {
+        width: 100%;
+    }
+    .checkoutPage-totalBox {
+        margin-top: 10px;
+    }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media only screen and (min-width:768px) and (max-width: 1224px) {
+}
+
+@media only screen and (min-width: 1225px) {
 }

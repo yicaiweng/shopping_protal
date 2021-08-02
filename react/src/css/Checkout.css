@@ -113,3 +113,72 @@
     border-radius: 5px;
     height: 3vh;
 }
+
+@media (max-width: 575.98px) {
+    .loginPage-form {
+        width: 90%;
+    }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media only screen and (max-width: 320px) {
+    .checkoutPage-right {
+        width: 100%;
+    }
+    .checkoutPage-left {
+        width: 100%;
+        padding-bottom: 1em;
+    }
+    .checkoutPage-img {
+        height: 8vh;
+    }
+    .checkoutPage-itemInfo-itemName {
+        font-size: 20px;
+        width: 55%;
+    }
+    .checkoutPage-itemInfo-quantity {
+        width: 10%;
+    }
+    .checkoutPage-itemInfo-removeBtn-container {
+        margin-right: 5%;   
+    }
+    .checkoutPage-itemInfo-container {
+        height: 12vh;
+    }
+    .checkoutPage-left-btn {
+        width: 90%;
+    }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media only screen and (min-width:321px) and (max-width: 767px) {
+    .checkoutPage-right {
+        width: 100%;
+    }
+    .checkoutPage-left {
+        width: 100%;
+    }
+    .checkoutPage-left-btn{ 
+        width: 90%;
+        margin-left: 5%;
+    }
+    .checkoutPage-itemInfo-itemName {
+        width: 60%;
+    }
+    .checkoutPage-itemInfo-quantity{
+        width: 10%;
+    }
+    .checkoutPage-itemInfo-removeBtn-container {
+        margin-right: 10%;
+    }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media only screen and (min-width:768px) and (max-width: 1224px) {
+    .checkoutPage-left-btn {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 1225px) {
+}

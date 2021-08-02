@@ -73,7 +73,7 @@
 
 .itemListPage-card {
     border: 1px solid grey;
-    width: 30%;
+    width: 31%;
     height: auto;
     float: left;
     margin: 1%;
@@ -104,4 +104,75 @@
     height: 100%;
     font-size: 25px;
     border-radius: 5px;
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media only screen and (max-width: 320px) {
+    .itemListPage-brand{
+        font-size: 16px;
+    } 
+    .itemListPage-card {
+        width: 45%;
+    }
+    .itemListPage-searchbar {
+        width: 45%;
+        text-align: left;
+    }
+    .itemListPage-inputField {
+        width: 70%;
+    }
+    .itemListPage-cart {
+        margin-right: 10%;
+    }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media only screen and (min-width:321px) and (max-width: 767px) {
+    .itemListPage-brand{
+        width: 40%;
+        font-size: 24px;
+    } 
+    .itemListPage-card {
+        width: 48%;
+    }
+    .itemListPage-searchbar {
+        width: 45%;
+        text-align: left;
+    }
+    .itemListPage-inputField {
+        width: 70%;
+    }
+    .itemListPage-cart {
+        margin-right: 10%;
+    }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media only screen and (min-width:768px) and (max-width: 1224px) {
+    .itemListPage-brand{
+        width: 30%;
+    }
+    .itemListPage-searchbar {
+        width: 40%;
+        text-align: left;
+    }
+    .itemListPage-inputField {
+        width: 70%;
+    }
+    .itemListPage-cart {
+        margin-right: 7%;
+    }
+}
+
+@media only screen and (min-width: 1225px) {
+    .itemListPage-searchbar {
+        width: 40%;
+        text-align: left;
+    }
+    .itemListPage-inputField {
+        width: 70%;
+    }
+    .itemListPage-cart {
+        margin-right: 7%;
+    }
 }

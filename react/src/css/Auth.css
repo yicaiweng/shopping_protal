@@ -25,6 +25,10 @@
     margin: 10px 0;
 }
 
+.loginPage-input {
+    width: 100%;
+}
+
 .loginPage-errMsg-Container {
     margin-top: 5px;
     background-color: #FFDCE0;
@@ -43,3 +47,27 @@
     margin: 10px;;
 }
 
+/* Small devices (landscape phones, less than 768px) */
+@media only screen and (max-width: 320px) {
+    .loginPage-form {
+        width: 90%;
+    }
+}
+
+/* Medium devices (tablets, less than 992px) */
+@media only screen and (min-width:321px) and (max-width: 767px) {
+    .loginPage-form {
+        width: 60%;
+    }
+}
+
+/* Large devices (desktops, less than 1200px) */
+@media only screen and (min-width:768px) and (max-width: 1224px) {
+    .loginPage-form {
+        width: 30%;
+    }
+}
+
+@media only screen and (min-width: 1225px) {
+    
+}
