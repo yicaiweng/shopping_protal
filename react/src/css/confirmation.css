@@ -15,6 +15,12 @@
     font-weight: bold;
 }
 
+.confirmPage-content {
+    padding: 3%;
+    height: 100vh;
+    width: 100%;
+    background-color: #F4F4F4;}
+
 .confirmPage-header h2{
     padding-bottom: 15px;
     border-bottom: 1px solid lightgray;
@@ -97,6 +103,9 @@
 
 /* Medium devices (tablets, less than 992px) */
 @media only screen and (min-width:321px) and (max-width: 767px) {
+    .confirmPage-content {
+        height: 140vh;
+    }
     .confirmPage-left {
         width: 100%;
     }

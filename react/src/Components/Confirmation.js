@@ -22,7 +22,7 @@ function Confirmation(props) {
             <div className="itemListPage-header">
                 <span className="itemListPage-brand">Shopping Portal</span>
             </div>
-            <div className="itemListPage-content">
+            <div className="confirmPage-content">
                 <div className="confirmPage-left">
                     <div>
                         <div className="confirmPage-header">
