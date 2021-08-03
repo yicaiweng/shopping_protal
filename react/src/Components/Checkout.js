@@ -13,21 +13,22 @@ function Checkout(props) {
     const [shipping, setShipping] = useState('');
     let history = useHistory();
 
-    useEffect(() => {
-        setItemsFromCart(props.location.data);
+    useEffect(() => {// assigning data pass from itemlist page
+        setItemsFromCart(props.location.unfilteredCart);
+        setItemsToCheckout(props.location.filteredCart);
         getCartTotal()
-    }, [itemsFromCart, props.location.data])
+    }, [itemsFromCart, props.location])
 
-    const getCartTotal = () => {
+    const getCartTotal = () => { // calculate cart's total info
         let itemsTotal = 0;
         let costsTotal = 0;
         let cartTotal = 0;
         let saleTax = 0;
 
-        if (itemsFromCart.length > 0) {
-            for (var i in itemsFromCart) {
-                itemsTotal = parseInt(itemsTotal) + parseInt(itemsFromCart[i].quantity)
-                costsTotal = parseFloat(costsTotal) + parseFloat(itemsFromCart[i].quantity * itemsFromCart[i].itemPrice)
+        if (itemsToCheckout.length > 0) {
+            for (var i in itemsToCheckout) {
+                itemsTotal = parseInt(itemsTotal) + parseInt(itemsToCheckout[i].quantity)
+                costsTotal = parseFloat(costsTotal) + parseFloat(itemsToCheckout[i].quantity * itemsToCheckout[i].itemPrice)
                 saleTax = parseFloat(costsTotal * 0.0825);
                 cartTotal = parseFloat(costsTotal) + parseFloat(saleTax) + parseInt(8);
                 setCartCount(itemsTotal);
@@ -45,44 +46,49 @@ function Checkout(props) {
         }
     }
 
-    const updateQuantity = (e, items) => {
-        let itemQuantity = e.target.value;
-        for (var i in itemsFromCart) {
-            if (items.id === itemsFromCart[i].id) {
+    const updateQuantity = (e, items) => { // update items quantity 
+        let itemQuantity = 0;
+        if (e.target.value !== 0) {
+            itemQuantity = e.target.value;
+        } else {
+            e.target.value = 0;
+        }
+
+        for (var i in itemsToCheckout) {
+            if (items.id === itemsToCheckout[i].id) {
                 items.quantity = itemQuantity;
-                setItemsToCheckout(result => [...result, items]);
             }
         }
-        filterCart(itemsFromCart);
+        filterCart(itemsToCheckout);
         getCartTotal();
     }
 
-    const filterCart = cart => {
-        const itemsFromCart = cart.sort(({ quantity: a }, { quantity: b }) => b - a)
+    const filterCart = cart => { //filter out cart's array and also re calculate total info
+        cart.sort(({ quantity: a }, { quantity: b }) => b - a)
             .filter((elements, index) => index === cart.findIndex(element => elements.id === element.id))
         getCartTotal();
-        return itemsFromCart;
+        return cart;
     }
 
-    const removeItem = item => {
-        for (var i in itemsFromCart) {
-            if (item.id === itemsFromCart[i].id) {
-                itemsFromCart.splice(i, 1);
+    const removeItem = item => { // remove item from cart
+        for (var i in itemsToCheckout) {
+            if (item.id === itemsToCheckout[i].id) {
+                itemsToCheckout.splice(i, 1);
             }
         }
         getCartTotal();
     }
 
-    const goToitemList = () => {
+    const goToitemList = () => {// direct user to itemlist page
         history.push('/itemList');
     }
 
-    const goBack = () => {
-        history.push({ pathname: '/itemList', data: itemsFromCart })
+    const goBack = () => { // direct user to itemlist page with data
+        history.push({ pathname: '/itemList', unfilteredCart: itemsFromCart, comeFrom: 'checkout' })
     }
 
-    const gotoCheckout = () => {
-        history.push({ pathname: '/confirmation', data: itemsFromCart, cartCount: cartCount, cartCosts: cartCosts, saleTax: saleTax, cartTotal: cartTotal, shipping: shipping })
+    const gotoCheckout = () => { //direct user to confirmation page with data
+        history.push({ pathname: '/confirmation', data: itemsToCheckout, cartCount: cartCount, cartCosts: cartCosts, saleTax: saleTax, cartTotal: cartTotal, shipping: shipping })
     }
 
     return (
@@ -102,9 +108,9 @@ function Checkout(props) {
                         <div className="checkoutPage-cartCount">Cart ({cartCount})</div>
                         <div className="checkoutPage-left">
                             {
-                                itemsFromCart.length > 0 ?
+                                itemsToCheckout.length > 0 ?
                                     <div>
-                                        {itemsFromCart.map(items => {
+                                        {itemsToCheckout.map(items => {
                                             return (
                                                 <div className="checkoutPage-itemInfo-container" key={items.id}>
                                                     <div className="checkoutPage-img-container">
