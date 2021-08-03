@@ -2,7 +2,6 @@ import Axios from 'axios';
 import '../css/itemList.css';
 import React, { useEffect, useState } from 'react';
 import shoppingCart from '../css/img/shoppingCart.png';
-import Checkout from './Checkout'
 import { useHistory } from "react-router-dom";
 
 function ItemList(props) {
@@ -10,7 +9,6 @@ function ItemList(props) {
     const [itemsInCart, setItemsInCart] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
-    const [gotoCheckOut, setGotoCheckout] = useState(false);
     let history = useHistory();
 
     useEffect(() => {
@@ -18,17 +16,18 @@ function ItemList(props) {
         Axios.get('http://localhost:3001/listofitems').then((res) => {
             if (isMounted) {
                 setListOfItems(res.data);
-                if (props.location.data) {
-                    setItemsInCart(props.location.data);
+                if (props.location.unfilteredCart) {
+                    setItemsInCart(props.location.unfilteredCart)
                 }
             }
         })
         return () => { isMounted = false };
-    }, [listOfItems, props.location.data, itemsInCart])
+    }, [listOfItems, itemsInCart, props.location.unfilteredCart])
 
     const addTocart = item => {
         item.quantity = 1;
-        for (var i = 0; i < itemsInCart.length; i++) {
+        console.log(item)
+        for (var i in itemsInCart) {
             if (item.id === itemsInCart[i].id) {
                 item.quantity = item.quantity + 1;
             }
@@ -49,7 +48,9 @@ function ItemList(props) {
     const gotoCheckoutPage = () => {
         const result = itemsInCart.sort(({ quantity: a }, { quantity: b }) => b - a)
             .filter((elements, index) => index === itemsInCart.findIndex(element => elements.id === element.id))
-        history.push({ pathname: '/checkout', data: result })
+        console.log(itemsInCart)
+
+        history.push({ pathname: '/checkout', filteredCart: result, unfilteredCart: itemsInCart })
     }
 
     return (
