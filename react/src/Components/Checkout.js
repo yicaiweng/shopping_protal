@@ -94,7 +94,7 @@ function Checkout(props) {
                         <span className="itemListPage-cart">
                             <button className="itemlistPage-cartBtn" type="button" onClick={() => goBack()}>
                                 <img className="itemListPage-cartIcon" src={ShoppingBag} alt="shopping cart icon"></img>
-                                {itemsFromCart.length > 0 ? <span className="itemListPage-cartNum">{itemsFromCart.length}</span> : null}
+                                {itemsFromCart.length > 0 ? <span className="itemListPage-cartNum">{cartCount}</span> : null}
                             </button>
                         </span>
                     </div>
