@@ -8,12 +8,12 @@ function Confirmation(props) {
     const [orderDate, setOrderDate] = useState('');
     const [checkoutItems, setCheckOutItems] = useState([])
 
-    useEffect(() => {
+    useEffect(() => { // assigning data pass from checkout page
         setOrderDate(new Date().toLocaleString().split(',')[0]);
         setCheckOutItems(props.location.data)
     }, [checkoutItems, props.location])
 
-    const printPage = () => {
+    const printPage = () => { // print page functionality, still WIP
         window.print();
     }
 

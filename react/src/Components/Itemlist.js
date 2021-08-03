@@ -11,7 +11,7 @@ function ItemList(props) {
     const [searchResults, setSearchResults] = useState([]);
     let history = useHistory();
 
-    useEffect(() => {
+    useEffect(() => { //pulling data from database, also handle data pass from checkout page if its redirect from checkout page
         let isMounted = true;
         Axios.get('http://localhost:3001/listofitems').then((res) => {
             if (isMounted) {
@@ -24,7 +24,7 @@ function ItemList(props) {
         return () => { isMounted = false };
     }, [listOfItems, itemsInCart, props.location.unfilteredCart])
 
-    const addTocart = item => {
+    const addTocart = item => { // add items to cart
         item.quantity = 1;
         console.log(item)
         for (var i in itemsInCart) {
@@ -35,20 +35,19 @@ function ItemList(props) {
         setItemsInCart(itemsInCart => [...itemsInCart, item]);
     }
 
-    const handleSearch = e => {
+    const handleSearch = e => { //grabbing search term 
         setSearchTerm(e.target.value);
     }
 
-    useEffect(() => {
+    useEffect(() => { //filter itemlist based on search term 
         const results = listOfItems.filter(item =>
             item.itemName.toString().toLowerCase().includes(searchTerm.toString().toLowerCase()));
         setSearchResults(results);
     }, [listOfItems, searchTerm]);
 
-    const gotoCheckoutPage = () => {
+    const gotoCheckoutPage = () => { //filter itemsInCart then redirect user to checkout page
         const result = itemsInCart.sort(({ quantity: a }, { quantity: b }) => b - a)
             .filter((elements, index) => index === itemsInCart.findIndex(element => elements.id === element.id))
-        console.log(itemsInCart)
 
         history.push({ pathname: '/checkout', filteredCart: result, unfilteredCart: itemsInCart })
     }

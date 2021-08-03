@@ -11,11 +11,11 @@ function Auth(props) {
     const [error, setError] = useState(false);
     let history = useHistory();
 
-    function enableSubmit() {
+    function enableSubmit() { //enable sign in button when both username and password files are not empty
         return userName.length > 0 && password.length > 0;
     }
 
-    function signIn() {
+    function signIn() { //checking crenditial, if match, go to itemlist page, if false, display error message
         if (userName.toString().toLowerCase() === adminName.toString().toLowerCase() && password.toString().toLowerCase() === adminPassword.toString().toLowerCase()) {
             console.log('Login successfully')
             setError(false);

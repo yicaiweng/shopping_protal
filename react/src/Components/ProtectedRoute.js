@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 const ProtectedRoute = ({ component: Component, ...rest }) => {
     let history = useHistory();
 
-    if (rest.user === false) {
+    if (rest.user === false) {// auth check, if false, direct user to login page
         history.push('/');
     }
 

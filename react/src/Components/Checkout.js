@@ -13,14 +13,13 @@ function Checkout(props) {
     const [shipping, setShipping] = useState('');
     let history = useHistory();
 
-    useEffect(() => {
+    useEffect(() => {// assigning data pass from itemlist page
         setItemsFromCart(props.location.unfilteredCart);
         setItemsToCheckout(props.location.filteredCart);
-        console.log(itemsFromCart);
         getCartTotal()
     }, [itemsFromCart, props.location])
 
-    const getCartTotal = () => {
+    const getCartTotal = () => { // calculate cart's total info
         let itemsTotal = 0;
         let costsTotal = 0;
         let cartTotal = 0;
@@ -47,7 +46,7 @@ function Checkout(props) {
         }
     }
 
-    const updateQuantity = (e, items) => {
+    const updateQuantity = (e, items) => { // update items quantity 
         let itemQuantity = 0;
         if (e.target.value !== 0) {
             itemQuantity = e.target.value;
@@ -64,14 +63,14 @@ function Checkout(props) {
         getCartTotal();
     }
 
-    const filterCart = cart => {
+    const filterCart = cart => { //filter out cart's array and also re calculate total info
         cart.sort(({ quantity: a }, { quantity: b }) => b - a)
             .filter((elements, index) => index === cart.findIndex(element => elements.id === element.id))
         getCartTotal();
         return cart;
     }
 
-    const removeItem = item => {
+    const removeItem = item => { // remove item from cart
         for (var i in itemsToCheckout) {
             if (item.id === itemsToCheckout[i].id) {
                 itemsToCheckout.splice(i, 1);
@@ -80,15 +79,15 @@ function Checkout(props) {
         getCartTotal();
     }
 
-    const goToitemList = () => {
+    const goToitemList = () => {// direct user to itemlist page
         history.push('/itemList');
     }
 
-    const goBack = () => {
+    const goBack = () => { // direct user to itemlist page with data
         history.push({ pathname: '/itemList', unfilteredCart: itemsFromCart, comeFrom: 'checkout' })
     }
 
-    const gotoCheckout = () => {
+    const gotoCheckout = () => { //direct user to confirmation page with data
         history.push({ pathname: '/confirmation', data: itemsToCheckout, cartCount: cartCount, cartCosts: cartCosts, saleTax: saleTax, cartTotal: cartTotal, shipping: shipping })
     }
 
