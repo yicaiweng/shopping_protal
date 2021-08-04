@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useEffect, useState } from 'react/cjs/react.development';
+import { useReactToPrint } from 'react-to-print';
 import '../css/confirmation.css'
 import Printer from '../css/img/printer.png'
 import Card from '../css/img/card.png'
@@ -13,12 +14,13 @@ function Confirmation(props) {
         setCheckOutItems(props.location.data)
     }, [checkoutItems, props.location])
 
-    const printPage = () => { // print page functionality, still WIP
-        window.print();
-    }
+    const conponentRef = useRef();
+    const printPage = useReactToPrint({ // print page functionality, still WIP
+        content: () => conponentRef.current,
+    })
 
     return (
-        <div className="itemListPage">
+        <div className="itemListPage" ref={conponentRef}>
             <div className="itemListPage-header">
                 <span className="itemListPage-brand">Shopping Portal</span>
             </div>
@@ -39,7 +41,7 @@ function Confirmation(props) {
                             </div>
                         </div>
                         <div className="confirmPage-printContainer">
-                            <button className="confirmPage-printBtn" onClick={() => printPage}>
+                            <button className="confirmPage-printBtn" onClick={() => printPage()}>
                                 <img src={Printer} className="confirmPage-printerIcon" alt="printer icon"></img>
                                 Print
                             </button>
