@@ -30,7 +30,7 @@ protected route: `/checkout` <br/>
 ### confirmation page
 protected route: `/confirmation`<br/>
 - data is from checkout page
-- allows user to print this page ( work in process) 
+- allows user to print this page
 - allows user to ask for help (work in process)
 - gives user an overview of the order summary, items ordered, and mocked up data of payment info
 
