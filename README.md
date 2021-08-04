@@ -1,4 +1,4 @@
-This project is a simple ecommerce website that is using ReactJS for the front end, ExpressJS for the backend and MongoDB to store data
+This project is a simple ecommerce website that is using ReactJS for the front end, ExpressJS for the backend and MongoDB to store data <br/>
 to run this project, run server first then react 
 ![localhost_3000_checkout](https://user-images.githubusercontent.com/13059369/128052810-45d2ab7e-fbbe-4aa6-a936-a0eacc42965a.png)
 ![localhost_3000_checkout (1)](https://user-images.githubusercontent.com/13059369/128052798-59041b9e-b0e6-4e73-8040-3237a4d0d0e7.png)
