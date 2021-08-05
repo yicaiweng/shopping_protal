@@ -22,7 +22,7 @@ function ItemList(props) {
             }
         })
         return () => { isMounted = false };
-    }, [listOfItems, itemsInCart, props.location.unfilteredCart])
+    }, [props.location.unfilteredCart])
 
     const addTocart = item => { // add items to cart
         item.quantity = 1;
